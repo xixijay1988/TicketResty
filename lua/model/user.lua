@@ -109,4 +109,7 @@ function _M.checkPassword(username, password)
     end
 end
 
+function _M.getTicket(username)
+end
+
 return _M;
