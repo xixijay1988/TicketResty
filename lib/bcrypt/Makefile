@@ -10,6 +10,7 @@ test: bcrypt.c crypt_blowfish
 
 bcrypt.a: bcrypt.o crypt_blowfish
 	ar r bcrypt.a bcrypt.o crypt_blowfish/*.o
+	$(CC) -W -Wall -shared -fPIC -o libbcrypt.so bcrypt.o crypt_blowfish/*.o
 
 bcrypt.o: bcrypt.c
 	$(CC) $(CFLAGS) -c bcrypt.c
