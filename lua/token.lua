@@ -7,9 +7,11 @@
 --
 
 local jwt = require "resty.jwt";
+local userModel = require "model.user";
 local headers = ngx.req.get_headers();
+local json = require "cjson";
 
-if not headers then
+if headers then
 
     local token = headers["Authorization"];
     if not token then
@@ -38,7 +40,7 @@ if not headers then
             return
         end
 
-        ngx.cxt.user = user;
+        ngx.ctx.user = user;
 
     else
         ngx.status = ngx.HTTP_UNAUTHORIZED;
