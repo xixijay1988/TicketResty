@@ -9,7 +9,11 @@
 local ffi = require "ffi";
 local C = ffi.C;
 local _M = { _VERSION = "0.0.1" };
-local bcrypt = ffi.load("/home/xixi/Code/OpenResty/TicketResty/lib/bcrypt/libbcrypt.so");
+
+local findso = require "resty.find-so"
+
+local bcryptPath = findso.find_shared_obj(package.cpath, "libbcrypt.so")
+local bcrypt = ffi.load(bcryptPath);
 
 
 
