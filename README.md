@@ -9,3 +9,6 @@
 ## ToDo List
 
 - change to `ngx.location.capture`
+- using cosokect connection pool
+- add record
+

@@ -109,7 +109,33 @@ function _M.checkPassword(username, password)
     end
 end
 
-function _M.getTicket(username)
+--
+--local update = {}
+--update["$set"] = {["tab.a"] = 2}
+--- -update["$set"]["tab.a"] = 2
+-- r,err = col:update({name="dog"},update, nil, nil, true)
+-- if not r then ngx.say("update failed: "..err) end
+function _M.updateTicket(targetUser, count)
+
+    local db = mongo.init();
+
+    if not db then
+        return false, "Not connected";
+    end
+
+    local col = db:get_col("userInfo");
+
+    local update = {};
+    update["$set"] = { ["tickets"] = count };
+    local r, err = col:update({ username = targetUser.username }, update, nil, nil, true);
+
+    if not r then
+        return false, err;
+    else
+        return true, nil;
+    end
+
+
 end
 
 return _M;
