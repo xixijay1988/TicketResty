@@ -11,4 +11,5 @@
 - change to `ngx.location.capture`
 - using cosokect connection pool
 - add record
+- add websocket to notify user
 
